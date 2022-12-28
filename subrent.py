@@ -21,6 +21,7 @@ def _reset(options):
     import os
     logging.info('Starting a reset...')
     open(os.path.join("db", "subrent.db"), "w")
+    logging.info('Resetting the database is done.')
 
 
 def _import_json_file(options):
