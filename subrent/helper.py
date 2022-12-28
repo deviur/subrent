@@ -12,6 +12,7 @@ def import_json(data: List[Dict]) -> int:
     categories = Categories()
     logging.debug(f"{len(categories)=}, {categories.get_category(0)=}")
 
+    count = 0
     for dict_row in data:
         if dict_row['deleted']:
             continue
@@ -23,10 +24,6 @@ def import_json(data: List[Dict]) -> int:
             continue
 
         db.insert('transactions', transaction)
+        count += 1
 
-    cursor = db.get_cursor()
-    cursor.execute('SELECT * FROM transactions ORDER BY created')
-    transactions = cursor.fetchall()
-    logging.debug(f"{len(transactions)=}, {transactions[-1]}")
-
-    return len(transactions)
+    return count

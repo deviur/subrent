@@ -2,7 +2,7 @@
 import argparse
 import logging
 
-from subrent import helper
+from subrent import helper, report
 
 
 def _parse(argv):
@@ -40,6 +40,7 @@ def _import_json_file(options):
 def _report(options):
     logging.info(f'Starting a report...')
     logging.debug(f'{options.date=}')
+    print(report.make_report(options.date))
 
 
 def runner(options):
