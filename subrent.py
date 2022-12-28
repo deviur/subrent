@@ -2,6 +2,8 @@
 import argparse
 import logging
 
+from subrent import helper
+
 
 def _parse(argv):
     parser = argparse.ArgumentParser(description='Get an income report for a day')
@@ -22,8 +24,16 @@ def _reset(options):
 
 
 def _import_json_file(options):
+    import json
     logging.info('Starting an import...')
     logging.debug(f'{options.json_filename=}')
+
+    zenmoney_json_file = options.json_filename
+    transactions = json.load(open(zenmoney_json_file, 'r'))['transaction']
+    logging.debug(f"{len(transactions)=}")
+
+    count = helper.import_json(transactions)
+    logging.info(f'Imported {count} records')
 
 
 def _report(options):
