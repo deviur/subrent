@@ -16,7 +16,9 @@ def _parse(argv):
 
 
 def _reset(options):
+    import os
     logging.info('Starting a reset...')
+    open(os.path.join("db", "subrent.db"), "w")
 
 
 def _import_json_file(options):
