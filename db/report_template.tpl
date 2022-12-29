@@ -3,10 +3,10 @@ $date
 Поступления за сегодня:
 $daily_incomes
 ------------------------------
-$daily_total_income
+$daily_total_income (Субаренда)
 
 Справочно с начала месяца:
-$monthly_plan (До выполнения плана)
+$monthly_plan_realization (Реализация плана)
 $daily_plan (План на сутки)
 $monthly_total_deposit (В залоге)
 ==============================
