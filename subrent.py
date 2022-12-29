@@ -10,10 +10,11 @@ def _parse(argv):
     parser.add_argument('-D', '--debug', action='store_true', default=False, help="set debug logging level")
     subparsers = parser.add_subparsers(dest='command', required=True)
     reset_parser = subparsers.add_parser('reset', help="Reset Subrent's database")
+    test_parser = subparsers.add_parser('test', help="Test this application")
     import_parser = subparsers.add_parser('import', help="Import ZenMoney's json file to Subrent's database")
     import_parser.add_argument('json_filename', action='store', help="ZenMoney's json file")
     report_parser = subparsers.add_parser('report', help="Get a report")
-    report_parser.add_argument('date', action='store')
+    report_parser.add_argument('date', action='store', help="Select a date YYYY-MM-DD. For example, 2022-12-10")
     return parser.parse_args(argv[1:])
 
 
@@ -22,6 +23,13 @@ def _reset(options):
     logging.info('Starting a reset...')
     open(os.path.join("db", "subrent.db"), "w")
     logging.info('Resetting the database is done.')
+
+
+def _test(options):
+    import run_test
+    logging.info('Start testing...')
+    run_test.run(options.debug)
+    logging.info('Testing is done.')
 
 
 def _import_json_file(options):
@@ -50,6 +58,7 @@ def runner(options):
 
 COMMANDS = {
     'reset': _reset,
+    'test': _test,
     'import': _import_json_file,
     'report': _report,
 }

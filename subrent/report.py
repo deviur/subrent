@@ -2,9 +2,7 @@ import os
 
 from typing import List, Tuple
 from string import Template
-from subrent import transactions, date_helper as d
-
-MONTHLY_PLAN = 148000 + 35250 + 1950 + 3000 + 8300
+from subrent import transactions, date_helper as d, MONTHLY_PLAN
 
 
 def make_report(date: str) -> str:
