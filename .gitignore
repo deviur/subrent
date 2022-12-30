@@ -1,3 +1,4 @@
 .idea/
 /db/subrent.db
 __pycache__/
+.~lock*
